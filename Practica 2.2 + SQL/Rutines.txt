@@ -1,0 +1,40 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ADDEMPLOYEE`(IN `newDate` DATE, IN `newFirstName` VARCHAR(40), IN `newId` INT, IN `newLastName` VARCHAR(40), IN `newSalary` FLOAT)
+BEGIN
+
+INSERT INTO employee (BIRTHDATE, FIRSTNAME, ID, LASTNAME, SALARY)
+VALUES (newDate, newFirstName, newId, newLastName, newSalary);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `FINDALLEMPLOYEES`()
+BEGIN
+
+SELECT ID, FIRSTNAME, LASTNAME, BIRTHDATE, SALARY
+FROM employee;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `REMOVEEMPLOYEE`(IN `newId` INT)
+BEGIN
+
+DELETE FROM employee 
+WHERE ID = newId;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UPDATEEMPLOYEE`(IN `newDate` DATE, IN `newFirstName` VARCHAR(40), IN `newId` INT, IN `newLastName` VARCHAR(40), IN `newSalary` FLOAT)
+BEGIN
+
+UPDATE employee
+SET ID = newId, BIRTHDATE = newDate, FIRSTNAME = newFirstName, LASTNAME = newLastName, SALARY = newSalary
+WHERE ID = newId;
+
+
+END$$
+DELIMITER ;
